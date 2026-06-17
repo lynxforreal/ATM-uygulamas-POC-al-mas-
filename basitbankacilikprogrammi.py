@@ -16,10 +16,9 @@ class BankingProgram(QWidget):
     def initUI(self):
         self.setWindowTitle("Banking App")
 
-        # Widgetlar
+        
         self.balance_info = QLabel("Balance:", self)
 
-        # Kullanıcı adını gireceğin input (placeholder ile)
         self.username_input = QLineEdit(self)
         self.username_input.setPlaceholderText("Kullanıcı adını giriniz (ör: Hakan)")
 
@@ -57,11 +56,9 @@ class BankingProgram(QWidget):
             }
         """)
 
-        # Signal-slot bağlantıları
         self.check_balance_btn.clicked.connect(self.show_balance)
         self.withdraw_btn.clicked.connect(self.withdraw_money)
 
-    # --- Slot fonksiyonlar ---
     def show_balance(self):
         """Girilen kullanıcı adının bakiyesini göster"""
         username = self.username_input.text().strip()
@@ -94,7 +91,7 @@ class BankingProgram(QWidget):
             self.balance_info.setText("Lütfen çekilecek miktarı giriniz.")
             return
 
-        # Rakam kontrolü (negatif ve ondalıklı kontrolü)
+        # Rakam kontrolü
         if not amount_text.isdigit():
             self.balance_info.setText("Miktar pozitif tamsayı olmalıdır.")
             return
